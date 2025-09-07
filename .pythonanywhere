@@ -1,0 +1,16 @@
+# PythonAnywhere Configuration
+# This file contains deployment-specific settings
+
+# WSGI Configuration
+WSGI_FILE = "wsgi.py"
+PYTHON_VERSION = "3.10"
+
+# Static Files Mapping
+STATIC_URL = "/static/"
+STATIC_ROOT = "/home/yourusername/XR-Chem-Lab/static/"
+
+# Environment Variables
+SECRET_KEY = "xr-chem-lab-secret-key-2024"
+
+# Domain
+# Your app will be available at: https://yourusername.pythonanywhere.com

@@ -1,0 +1,292 @@
+{% extends "base.html" %}
+
+{% block title %}Issues & Support - XR Chemistry Lab{% endblock %}
+
+{% block main_class %}pt-5{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h1 class="display-4 fw-bold">🐛 Issues & Support</h1>
+                <p class="lead text-muted">Report bugs, request features, or get help with XR Chemistry Lab</p>
+            </div>
+        </div>
+
+        <!-- Submit New Issue -->
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Submit New Issue</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ url_for('submit_issue') }}">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="title" class="form-label">Issue Title *</label>
+                                    <input type="text" class="form-control" id="title" name="title" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="category" class="form-label">Category *</label>
+                                    <select class="form-select" id="category" name="category" required>
+                                        <option value="">Select Category</option>
+                                        <option value="bug">🐛 Bug Report</option>
+                                        <option value="feature">✨ Feature Request</option>
+                                        <option value="gesture">🖐️ Gesture Issue</option>
+                                        <option value="performance">⚡ Performance</option>
+                                        <option value="compatibility">📱 Compatibility</option>
+                                        <option value="experiment">🧪 Experiment Issue</option>
+                                        <option value="ui">🎨 UI/UX</option>
+                                        <option value="documentation">📚 Documentation</option>
+                                        <option value="other">❓ Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="priority" class="form-label">Priority *</label>
+                                    <select class="form-select" id="priority" name="priority" required>
+                                        <option value="">Select Priority</option>
+                                        <option value="low">🟢 Low</option>
+                                        <option value="medium">🟡 Medium</option>
+                                        <option value="high">🔴 High</option>
+                                        <option value="critical">🚨 Critical</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="reporter" class="form-label">Your Name *</label>
+                                    <input type="text" class="form-control" id="reporter" name="reporter" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                                <div class="form-text">We'll use this to follow up on your issue</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description *</label>
+                                <textarea class="form-control" id="description" name="description" rows="5" required 
+                                    placeholder="Please provide detailed information about the issue, including:
+- Steps to reproduce (for bugs)
+- Expected vs actual behavior
+- Device/platform information
+- Screenshots or videos if applicable"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Issue
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Existing Issues -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0"><i class="fas fa-list me-2"></i>Recent Issues</h4>
+                        <span class="badge bg-light text-dark">{{ issues|length }} Total</span>
+                    </div>
+                    <div class="card-body">
+                        {% if issues %}
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            <th>Priority</th>
+                                            <th>Reporter</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for issue in issues %}
+                                        <tr>
+                                            <td><span class="badge bg-secondary">#{{ issue.id }}</span></td>
+                                            <td>
+                                                <strong>{{ issue.title }}</strong>
+                                                <br>
+                                                <small class="text-muted">{{ issue.description[:100] }}{% if issue.description|length > 100 %}...{% endif %}</small>
+                                            </td>
+                                            <td>
+                                                {% if issue.category == 'bug' %}
+                                                    <span class="badge bg-danger">🐛 Bug</span>
+                                                {% elif issue.category == 'feature' %}
+                                                    <span class="badge bg-success">✨ Feature</span>
+                                                {% elif issue.category == 'gesture' %}
+                                                    <span class="badge bg-warning">🖐️ Gesture</span>
+                                                {% elif issue.category == 'performance' %}
+                                                    <span class="badge bg-info">⚡ Performance</span>
+                                                {% elif issue.category == 'compatibility' %}
+                                                    <span class="badge bg-primary">📱 Compatibility</span>
+                                                {% elif issue.category == 'experiment' %}
+                                                    <span class="badge bg-secondary">🧪 Experiment</span>
+                                                {% elif issue.category == 'ui' %}
+                                                    <span class="badge bg-dark">🎨 UI/UX</span>
+                                                {% elif issue.category == 'documentation' %}
+                                                    <span class="badge bg-light text-dark">📚 Docs</span>
+                                                {% else %}
+                                                    <span class="badge bg-muted">❓ Other</span>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if issue.priority == 'critical' %}
+                                                    <span class="badge bg-danger">🚨 Critical</span>
+                                                {% elif issue.priority == 'high' %}
+                                                    <span class="badge bg-warning">🔴 High</span>
+                                                {% elif issue.priority == 'medium' %}
+                                                    <span class="badge bg-info">🟡 Medium</span>
+                                                {% else %}
+                                                    <span class="badge bg-success">🟢 Low</span>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ issue.reporter }}</td>
+                                            <td><small>{{ issue.date }}</small></td>
+                                            <td>
+                                                {% if issue.status == 'Open' %}
+                                                    <span class="badge bg-primary">Open</span>
+                                                {% elif issue.status == 'In Progress' %}
+                                                    <span class="badge bg-warning">In Progress</span>
+                                                {% elif issue.status == 'Resolved' %}
+                                                    <span class="badge bg-success">Resolved</span>
+                                                {% else %}
+                                                    <span class="badge bg-secondary">Closed</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <div class="text-center py-5">
+                                <i class="fas fa-clipboard-list fa-3x text-muted mb-3"></i>
+                                <h5 class="text-muted">No issues reported yet</h5>
+                                <p class="text-muted">Be the first to help improve XR Chemistry Lab!</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Support Resources -->
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <h3 class="fw-bold mb-4 text-center">🛠️ Support Resources</h3>
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="card h-100 border-0 shadow-sm text-center">
+                            <div class="card-body">
+                                <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                                <h5>Documentation</h5>
+                                <p class="text-muted small">Comprehensive guides and tutorials</p>
+                                <a href="{{ url_for('documentation') }}" class="btn btn-outline-primary btn-sm">View Docs</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card h-100 border-0 shadow-sm text-center">
+                            <div class="card-body">
+                                <i class="fab fa-github fa-3x text-dark mb-3"></i>
+                                <h5>GitHub Issues</h5>
+                                <p class="text-muted small">Report issues directly on GitHub</p>
+                                <a href="https://github.com/shubhmrj/XR-Lab/issues" class="btn btn-outline-dark btn-sm" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card h-100 border-0 shadow-sm text-center">
+                            <div class="card-body">
+                                <i class="fas fa-hand-paper fa-3x text-success mb-3"></i>
+                                <h5>Gesture Guide</h5>
+                                <p class="text-muted small">Learn all gesture controls</p>
+                                <a href="{{ url_for('gestures') }}" class="btn btn-outline-success btn-sm">Learn Gestures</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card h-100 border-0 shadow-sm text-center">
+                            <div class="card-body">
+                                <i class="fas fa-flask fa-3x text-warning mb-3"></i>
+                                <h5>Experiment Demos</h5>
+                                <p class="text-muted small">Watch experiment tutorials</p>
+                                <a href="{{ url_for('demos') }}" class="btn btn-outline-warning btn-sm">View Demos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="row mt-5">
+            <div class="col-lg-8 mx-auto">
+                <h3 class="fw-bold mb-4 text-center">❓ Frequently Asked Questions</h3>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                My hand gestures are not being recognized properly
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>Try these troubleshooting steps:</p>
+                                <ul>
+                                    <li>Ensure good lighting conditions</li>
+                                    <li>Keep hands within the camera's field of view</li>
+                                    <li>Recalibrate hand tracking in settings</li>
+                                    <li>Make sure ManoMotion SDK is properly initialized</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                The app crashes when I start an experiment
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>This could be due to:</p>
+                                <ul>
+                                    <li>Insufficient device memory - close other apps</li>
+                                    <li>Outdated app version - check for updates</li>
+                                    <li>Corrupted installation - try reinstalling</li>
+                                    <li>Device compatibility issues - check system requirements</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                Can I use XR Chemistry Lab without a VR headset?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>Yes! XR Chemistry Lab supports multiple platforms:</p>
+                                <ul>
+                                    <li>Mobile AR on Android devices with ARCore</li>
+                                    <li>Desktop VR with compatible headsets</li>
+                                    <li>Standalone VR on Meta Quest devices</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

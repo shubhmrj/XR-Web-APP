@@ -1,0 +1,753 @@
+/* Advanced Chemistry Lab Website - Industry Grade */
+
+/* Chemistry Color Palette */
+:root {
+    --bg-dark: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-card: rgba(20, 20, 20, 0.8);
+    --accent-pink: #ff1744;
+    --accent-blue: #00bcd4;
+    --accent-green: #4caf50;
+    --accent-yellow: #ffeb3b;
+    --accent-purple: #9c27b0;
+    --accent-orange: #ff5722;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-muted: #666666;
+    --border-glow: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding-top: 80px;
+}
+
+/* Advanced Navigation */
+.navbar {
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-glow);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--text-primary) !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-brand i {
+    color: var(--accent-pink);
+    font-size: 2rem;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+    margin: 0 1rem;
+    padding: 0.5rem 0 !important;
+    position: relative;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--text-primary) !important;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-pink), var(--accent-blue));
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hero Section with Chemistry Animation */
+.chemistry-hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #0d1117 50%, var(--bg-secondary) 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.chemistry-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 23, 68, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 188, 212, 0.1) 0%, transparent 50%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.8;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 2.5rem;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue) 50%, var(--accent-pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+    margin-bottom: 3.5rem;
+    max-width: 650px;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+.hero-tagline {
+    font-size: 1rem;
+    color: var(--accent-pink);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    display: inline-block;
+}
+
+.hero-tagline::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-pink), var(--accent-blue));
+}
+
+/* Chemistry Equipment Animation */
+.chemistry-lab {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.beaker {
+    position: relative;
+    width: 80px;
+    height: 120px;
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    border-radius: 0 0 40px 40px;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    animation: float 3s ease-in-out infinite;
+}
+
+.beaker:nth-child(1) { animation-delay: 0s; }
+.beaker:nth-child(2) { animation-delay: 0.5s; }
+.beaker:nth-child(3) { animation-delay: 1s; }
+.beaker:nth-child(4) { animation-delay: 1.5s; }
+.beaker:nth-child(5) { animation-delay: 2s; }
+
+.chemical-liquid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    border-radius: 0 0 38px 38px;
+    animation: bubble 2s ease-in-out infinite;
+}
+
+.beaker:nth-child(1) .chemical-liquid {
+    background: linear-gradient(180deg, var(--accent-yellow), #f57f17);
+}
+
+.beaker:nth-child(2) .chemical-liquid {
+    background: linear-gradient(180deg, var(--accent-blue), #0277bd);
+}
+
+.beaker:nth-child(3) .chemical-liquid {
+    background: linear-gradient(180deg, var(--accent-pink), #c2185b);
+}
+
+.beaker:nth-child(4) .chemical-liquid {
+    background: linear-gradient(180deg, var(--accent-green), #388e3c);
+}
+
+.beaker:nth-child(5) .chemical-liquid {
+    background: linear-gradient(180deg, var(--accent-purple), #7b1fa2);
+}
+
+.smoke {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 40px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.3), transparent);
+    border-radius: 50px;
+    animation: smoke-rise 2s ease-in-out infinite;
+}
+
+.test-tube {
+    position: relative;
+    width: 30px;
+    height: 150px;
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    border-radius: 0 0 15px 15px;
+    backdrop-filter: blur(10px);
+    margin: 0 1rem;
+    animation: float 4s ease-in-out infinite;
+}
+
+.test-tube .chemical-liquid {
+    height: 40%;
+    border-radius: 0 0 13px 13px;
+}
+
+/* Floating Particles */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    animation: particle-float 6s linear infinite;
+}
+
+.particle:nth-child(odd) {
+    background: var(--accent-pink);
+    animation-duration: 8s;
+}
+
+.particle:nth-child(3n) {
+    background: var(--accent-green);
+    animation-duration: 7s;
+}
+
+/* Advanced Buttons */
+.btn-chemistry {
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+    border: none;
+    color: white;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(255, 23, 68, 0.3);
+}
+
+.btn-chemistry:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(255, 23, 68, 0.4);
+}
+
+.btn-chemistry::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-chemistry:hover::before {
+    left: 100%;
+}
+
+.btn-outline-chemistry {
+    background: transparent;
+    border: 2px solid var(--accent-blue);
+    color: var(--accent-blue);
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-chemistry:hover {
+    background: var(--accent-blue);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 188, 212, 0.4);
+}
+
+/* Hero Features List */
+.hero-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.feature-item i {
+    color: var(--accent-green);
+    font-size: 1.1rem;
+}
+
+/* Feature Cards */
+.chemistry-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glow);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.chemistry-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-pink), var(--accent-blue), var(--accent-green));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.chemistry-card:hover::before {
+    opacity: 1;
+}
+
+.chemistry-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 20px 40px rgba(0, 188, 212, 0.2);
+}
+
+.card-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.card-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Feature Badges */
+.card-features {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.feature-badge {
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Technology Stack */
+.tech-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tech-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glow);
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+}
+
+.tech-item:hover {
+    transform: translateX(10px);
+    border-color: var(--accent-blue);
+}
+
+.tech-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.tech-info h5 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.tech-info p {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Technology Showcase */
+.tech-showcase {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.showcase-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glow);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+    animation: float 4s ease-in-out infinite;
+}
+
+.showcase-item:nth-child(1) { animation-delay: 0s; }
+.showcase-item:nth-child(2) { animation-delay: 1s; }
+.showcase-item:nth-child(3) { animation-delay: 2s; }
+.showcase-item:nth-child(4) { animation-delay: 3s; }
+
+.showcase-item:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: var(--accent-pink);
+    box-shadow: 0 20px 40px rgba(255, 23, 68, 0.3);
+}
+
+.showcase-item i {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.showcase-item span {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Stats Section */
+.stats-section {
+    background: var(--bg-secondary);
+    padding: 5rem 0;
+    position: relative;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 2rem;
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: 0.75rem;
+    text-shadow: 0 0 30px rgba(255, 23, 68, 0.3);
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 0.95rem;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes bubble {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(1.1); }
+}
+
+@keyframes smoke-rise {
+    0% {
+        opacity: 0.8;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-60px) scale(1.5);
+    }
+}
+
+@keyframes particle-float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 23, 68, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 23, 68, 0.6);
+    }
+}
+
+/* Section Styling */
+.section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--text-primary), var(--accent-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Footer */
+.chemistry-footer {
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border-glow);
+    padding: 3rem 0 1rem;
+}
+
+.footer-title {
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.footer-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--accent-blue);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .chemistry-lab {
+        height: 300px;
+        gap: 1rem;
+    }
+    
+    .beaker {
+        width: 60px;
+        height: 90px;
+    }
+    
+    .test-tube {
+        width: 25px;
+        height: 120px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .chemistry-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Loading Animation */
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.loading-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-beaker {
+    width: 100px;
+    height: 150px;
+    background: var(--glass-bg);
+    border: 3px solid var(--glass-border);
+    border-radius: 0 0 50px 50px;
+    position: relative;
+    animation: float 2s ease-in-out infinite;
+}
+
+.loading-liquid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: linear-gradient(180deg, var(--accent-blue), var(--accent-pink));
+    border-radius: 0 0 47px 47px;
+    animation: fill-beaker 3s ease-in-out infinite;
+}
+
+@keyframes fill-beaker {
+    0%, 100% { height: 20%; }
+    50% { height: 80%; }
+}

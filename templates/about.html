@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}About - XR Chemistry Lab{% endblock %}
+
+{% block main_class %}pt-5{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h1 class="display-4 fw-bold">👨‍💻 About XR Chemistry Lab</h1>
+                <p class="lead text-muted">Revolutionizing chemistry education through Extended Reality</p>
+            </div>
+        </div>
+
+        <!-- Project Overview -->
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center py-5">
+                        <i class="fas fa-flask fa-4x text-primary mb-4"></i>
+                        <h2 class="fw-bold mb-3">Our Mission</h2>
+                        <p class="lead text-muted mb-4">
+                            "Education is not the filling of a pail, but the lighting of a fire." - William Butler Yeats
+                        </p>
+                        <p class="text-muted">
+                            XR Chemistry Lab transforms traditional chemistry education by combining cutting-edge Extended Reality 
+                            technology with intuitive gesture controls, making complex chemical concepts accessible and engaging 
+                            for students worldwide.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-center">
+                    <img src="https://via.placeholder.com/500x400/2563eb/ffffff?text=About+XR+Lab" 
+                         alt="About XR Chemistry Lab" 
+                         class="img-fluid rounded shadow-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="feature-section">
+    <div class="container">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 shadow-sm bg-light">
+                    <div class="card-body text-center py-5">
+                        <h3 class="fw-bold mb-3">📞 Get in Touch</h3>
+                        <p class="text-muted mb-4">
+                            Have questions, suggestions, or want to collaborate? We'd love to hear from you!
+                        </p>
+                        <div class="contact-options d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="https://github.com/shubhmrj/XR-Lab" class="btn btn-outline-dark" target="_blank">
+                                <i class="fab fa-github me-2"></i>GitHub
+                            </a>
+                            <a href="{{ url_for('issues_page') }}" class="btn btn-outline-primary">
+                                <i class="fas fa-bug me-2"></i>Report Issues
+                            </a>
+                            <a href="mailto:contact@xrchemlab.com" class="btn btn-outline-success">
+                                <i class="fas fa-envelope me-2"></i>Email Us
+                            </a>
+                        </div>
+                        <div class="mt-4">
+                            <small class="text-muted">
+                                Project Link: <a href="https://github.com/shubhmrj/XR-Lab" target="_blank">https://github.com/shubhmrj/XR-Lab</a>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

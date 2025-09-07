@@ -1,0 +1,346 @@
+{% extends "base.html" %}
+
+{% block title %}Experiment Demos - XR Chemistry Lab{% endblock %}
+
+{% block main_class %}pt-5{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h1 class="display-4 fw-bold">🧪 Experiment Demos</h1>
+                <p class="lead text-muted">Explore our comprehensive library of interactive chemistry experiments</p>
+            </div>
+        </div>
+
+        <!-- Filter Options -->
+        <div class="row mb-4">
+            <div class="col-lg-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-3">
+                                <label class="form-label fw-bold">Filter by Difficulty:</label>
+                                <select class="form-select" id="difficultyFilter">
+                                    <option value="all">All Levels</option>
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="advanced">Advanced</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label fw-bold">Duration:</label>
+                                <select class="form-select" id="durationFilter">
+                                    <option value="all">Any Duration</option>
+                                    <option value="short">Under 15 min</option>
+                                    <option value="medium">15-20 min</option>
+                                    <option value="long">20+ min</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Search Experiments:</label>
+                                <input type="text" class="form-control" id="searchInput" placeholder="Search by name or description...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experiments Grid -->
+        <div class="row g-4" id="experimentsGrid">
+            {% for experiment in experiments %}
+            <div class="col-lg-6 experiment-item" 
+                 data-difficulty="{{ experiment.difficulty.lower() }}" 
+                 data-duration="{{ experiment.duration }}"
+                 data-title="{{ experiment.title.lower() }}"
+                 data-description="{{ experiment.description.lower() }}">
+                <div class="card h-100 border-0 shadow-sm experiment-card">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-4">
+                            <div class="experiment-image h-100 d-flex align-items-center justify-content-center bg-gradient-primary text-white">
+                                <div class="text-center">
+                                    {% if 'acid' in experiment.title.lower() %}
+                                        <i class="fas fa-tint fa-4x mb-2"></i>
+                                    {% elif 'flame' in experiment.title.lower() %}
+                                        <i class="fas fa-fire fa-4x mb-2"></i>
+                                    {% elif 'precipitation' in experiment.title.lower() %}
+                                        <i class="fas fa-flask fa-4x mb-2"></i>
+                                    {% elif 'electrochemistry' in experiment.title.lower() %}
+                                        <i class="fas fa-bolt fa-4x mb-2"></i>
+                                    {% else %}
+                                        <i class="fas fa-atom fa-4x mb-2"></i>
+                                    {% endif %}
+                                    <h6 class="mb-0">{{ experiment.title }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body h-100 d-flex flex-column">
+                                <div class="mb-2">
+                                    {% if experiment.difficulty == 'Beginner' %}
+                                        <span class="badge bg-success">🟢 {{ experiment.difficulty }}</span>
+                                    {% elif experiment.difficulty == 'Intermediate' %}
+                                        <span class="badge bg-warning">🟡 {{ experiment.difficulty }}</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">🔴 {{ experiment.difficulty }}</span>
+                                    {% endif %}
+                                    <span class="badge bg-info ms-1">⏱️ {{ experiment.duration }}</span>
+                                </div>
+                                
+                                <h5 class="card-title">{{ experiment.title }}</h5>
+                                <p class="card-text text-muted flex-grow-1">{{ experiment.description }}</p>
+                                
+                                <div class="gestures-used mb-3">
+                                    <h6 class="small fw-bold text-muted mb-1">Required Gestures:</h6>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        {% for gesture in experiment.gestures %}
+                                            <span class="badge bg-light text-dark small">{{ gesture }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                
+                                <div class="card-actions d-flex gap-2">
+                                    <button class="btn btn-primary btn-sm flex-fill" onclick="watchDemo('{{ experiment.title }}')">
+                                        <i class="fas fa-play me-1"></i>Watch Demo
+                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm" onclick="showDetails('{{ experiment.title }}')">
+                                        <i class="fas fa-info-circle me-1"></i>Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Additional Experiments Coming Soon -->
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <div class="card border-0 shadow-sm bg-light">
+                    <div class="card-body text-center py-5">
+                        <h3 class="fw-bold mb-3">🚀 More Experiments Coming Soon!</h3>
+                        <p class="text-muted mb-4">We're constantly adding new experiments to expand your chemistry learning experience.</p>
+                        
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-3">
+                                <div class="upcoming-experiment p-3 border rounded">
+                                    <i class="fas fa-thermometer-half fa-2x text-warning mb-2"></i>
+                                    <h6>Thermochemistry</h6>
+                                    <small class="text-muted">Heat transfer experiments</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="upcoming-experiment p-3 border rounded">
+                                    <i class="fas fa-microscope fa-2x text-info mb-2"></i>
+                                    <h6>Crystallization</h6>
+                                    <small class="text-muted">Crystal formation studies</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="upcoming-experiment p-3 border rounded">
+                                    <i class="fas fa-balance-scale fa-2x text-success mb-2"></i>
+                                    <h6>Stoichiometry</h6>
+                                    <small class="text-muted">Quantitative analysis</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="upcoming-experiment p-3 border rounded">
+                                    <i class="fas fa-dna fa-2x text-primary mb-2"></i>
+                                    <h6>Organic Chemistry</h6>
+                                    <small class="text-muted">Synthesis reactions</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="{{ url_for('issues_page') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-lightbulb me-2"></i>Suggest New Experiments
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning Path Recommendations -->
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <h3 class="fw-bold mb-4 text-center">📚 Recommended Learning Paths</h3>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-header bg-success text-white text-center">
+                                <h5 class="mb-0">🌱 Beginner Path</h5>
+                            </div>
+                            <div class="card-body">
+                                <ol class="learning-path">
+                                    <li>Flame Test Analysis</li>
+                                    <li>Basic Mixing Experiments</li>
+                                    <li>pH Indicator Tests</li>
+                                    <li>Simple Precipitation</li>
+                                </ol>
+                                <p class="text-muted small">Perfect for students new to chemistry</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-header bg-warning text-white text-center">
+                                <h5 class="mb-0">🎯 Intermediate Path</h5>
+                            </div>
+                            <div class="card-body">
+                                <ol class="learning-path">
+                                    <li>Acid-Base Titration</li>
+                                    <li>Precipitation Reactions</li>
+                                    <li>Redox Reactions</li>
+                                    <li>Gas Law Experiments</li>
+                                </ol>
+                                <p class="text-muted small">For students with basic chemistry knowledge</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-header bg-danger text-white text-center">
+                                <h5 class="mb-0">🚀 Advanced Path</h5>
+                            </div>
+                            <div class="card-body">
+                                <ol class="learning-path">
+                                    <li>Electrochemistry Cell</li>
+                                    <li>Complex Ion Formation</li>
+                                    <li>Kinetics Studies</li>
+                                    <li>Equilibrium Analysis</li>
+                                </ol>
+                                <p class="text-muted small">For advanced chemistry students</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Demo Modal -->
+<div class="modal fade" id="demoModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="demoModalTitle">Experiment Demo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="demo-placeholder bg-light p-5 rounded">
+                    <i class="fas fa-play-circle fa-5x text-primary mb-3"></i>
+                    <h4>Demo Video</h4>
+                    <p class="text-muted">Interactive demonstration of the experiment with gesture controls</p>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-external-link-alt me-2"></i>Open in XR Lab
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Details Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalTitle">Experiment Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="detailsModalBody">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Filter functionality
+document.getElementById('difficultyFilter').addEventListener('change', filterExperiments);
+document.getElementById('durationFilter').addEventListener('change', filterExperiments);
+document.getElementById('searchInput').addEventListener('input', filterExperiments);
+
+function filterExperiments() {
+    const difficultyFilter = document.getElementById('difficultyFilter').value;
+    const durationFilter = document.getElementById('durationFilter').value;
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    
+    const experiments = document.querySelectorAll('.experiment-item');
+    
+    experiments.forEach(experiment => {
+        let show = true;
+        
+        // Difficulty filter
+        if (difficultyFilter !== 'all') {
+            const difficulty = experiment.dataset.difficulty;
+            if (difficulty !== difficultyFilter) show = false;
+        }
+        
+        // Duration filter
+        if (durationFilter !== 'all' && show) {
+            const duration = experiment.dataset.duration;
+            if (durationFilter === 'short' && !duration.includes('10-15')) show = false;
+            if (durationFilter === 'medium' && !duration.includes('15-20')) show = false;
+            if (durationFilter === 'long' && !duration.includes('20-25')) show = false;
+        }
+        
+        // Search filter
+        if (searchTerm && show) {
+            const title = experiment.dataset.title;
+            const description = experiment.dataset.description;
+            if (!title.includes(searchTerm) && !description.includes(searchTerm)) {
+                show = false;
+            }
+        }
+        
+        experiment.style.display = show ? 'block' : 'none';
+    });
+}
+
+function watchDemo(experimentTitle) {
+    document.getElementById('demoModalTitle').textContent = experimentTitle + ' - Demo';
+    new bootstrap.Modal(document.getElementById('demoModal')).show();
+}
+
+function showDetails(experimentTitle) {
+    document.getElementById('detailsModalTitle').textContent = experimentTitle + ' - Details';
+    
+    // This would typically fetch detailed information from the server
+    const detailsContent = `
+        <div class="experiment-details">
+            <h6 class="fw-bold">Learning Objectives:</h6>
+            <ul>
+                <li>Understand the chemical principles involved</li>
+                <li>Master the required gesture controls</li>
+                <li>Observe and analyze results</li>
+            </ul>
+            
+            <h6 class="fw-bold mt-3">Safety Considerations:</h6>
+            <ul>
+                <li>Virtual safety equipment usage</li>
+                <li>Proper handling techniques</li>
+                <li>Emergency procedures</li>
+            </ul>
+            
+            <h6 class="fw-bold mt-3">Assessment Criteria:</h6>
+            <ul>
+                <li>Correct procedure execution</li>
+                <li>Accurate measurements</li>
+                <li>Result interpretation</li>
+            </ul>
+        </div>
+    `;
+    
+    document.getElementById('detailsModalBody').innerHTML = detailsContent;
+    new bootstrap.Modal(document.getElementById('detailsModal')).show();
+}
+</script>
+{% endblock %}

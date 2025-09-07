@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}XR Chemistry Lab{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/chemistry-style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/modern-hero.css') }}" rel="stylesheet">
+</head>
+<body>
+    <!-- Chemistry Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="fas fa-atom"></i>XR Chemistry Lab
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('features') }}">Experiments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('download') }}">Download</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('documentation') }}">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('issues_page') }}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="container mt-5 pt-4">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <main class="{% block main_class %}{% endblock %}">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Professional Footer -->
+    <footer class="professional-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-section">
+                    <h5 class="footer-title"><i class="fas fa-flask me-2"></i>XR Chemistry Lab</h5>
+                    <p class="text-light">Revolutionary Extended Reality platform for immersive chemistry education and virtual laboratory experiences.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="https://github.com/shubhmrj/XR-Lab" class="footer-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="footer-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="footer-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 footer-section">
+                    <h6 class="footer-title">Product</h6>
+                    <a href="{{ url_for('features') }}" class="footer-link">Features</a>
+                    <a href="{{ url_for('download') }}" class="footer-link">Download</a>
+                    <a href="{{ url_for('documentation') }}" class="footer-link">Documentation</a>
+                </div>
+                <div class="col-md-2 footer-section">
+                    <h6 class="footer-title">Support</h6>
+                    <a href="{{ url_for('issues_page') }}" class="footer-link">Help Center</a>
+                    <a href="{{ url_for('documentation') }}" class="footer-link">User Guide</a>
+                    <a href="#" class="footer-link">Community</a>
+                </div>
+                <div class="col-md-2 footer-section">
+                    <h6 class="footer-title">Company</h6>
+                    <a href="{{ url_for('about') }}" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Contact</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                </div>
+                <div class="col-md-2 footer-section">
+                    <h6 class="footer-title">Resources</h6>
+                    <a href="#" class="footer-link">Blog</a>
+                    <a href="#" class="footer-link">Tutorials</a>
+                    <a href="#" class="footer-link">API Docs</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 XR Chemistry Lab. All rights reserved. | Made with ❤️ for education</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/chemistry-animations.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

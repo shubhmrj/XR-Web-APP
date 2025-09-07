@@ -1,0 +1,348 @@
+{% extends "base.html" %}
+
+{% block title %}Documentation - XR Chemistry Lab{% endblock %}
+
+{% block main_class %}pt-5{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h1 class="display-4 fw-bold">📚 Documentation</h1>
+                <p class="lead text-muted">Complete guides and tutorials for XR Chemistry Lab</p>
+            </div>
+        </div>
+
+        <!-- Quick Start Guide -->
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0"><i class="fas fa-rocket me-2"></i>Quick Start Guide</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="fw-bold mb-3">🎯 Getting Started</h5>
+                                <ol class="setup-steps">
+                                    <li><strong>Download & Install:</strong> Get the app for your platform</li>
+                                    <li><strong>Setup Hand Tracking:</strong> Enable in device settings</li>
+                                    <li><strong>Calibrate Gestures:</strong> Follow the calibration wizard</li>
+                                    <li><strong>Choose Experiment:</strong> Start with beginner-level experiments</li>
+                                    <li><strong>Practice Mode:</strong> Master gestures before real experiments</li>
+                                </ol>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="fw-bold mb-3">⚡ First Experiment</h5>
+                                <div class="first-experiment bg-light p-3 rounded">
+                                    <h6 class="fw-bold text-primary">Recommended: Flame Test Analysis</h6>
+                                    <p class="small text-muted mb-2">Perfect for learning basic gestures</p>
+                                    <ul class="small">
+                                        <li>Duration: 10-15 minutes</li>
+                                        <li>Gestures: Ignite, Grab & Manipulate</li>
+                                        <li>Difficulty: Beginner</li>
+                                    </ul>
+                                    <a href="{{ url_for('demos') }}" class="btn btn-sm btn-primary">Start Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documentation Sections -->
+        <div class="row g-4">
+            <!-- Installation Guide -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0"><i class="fas fa-download me-2"></i>Installation Guide</h4>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold">Prerequisites</h6>
+                        <ul class="small mb-3">
+                            <li>Unity Hub and Unity Editor (2022.3.16f1+)</li>
+                            <li>ManoMotion SDK</li>
+                            <li>XR Device (Quest, HoloLens, or AR phone)</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold">Platform Setup</h6>
+                        <div class="accordion" id="installAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#quest">
+                                        Meta Quest Setup
+                                    </button>
+                                </h2>
+                                <div id="quest" class="accordion-collapse collapse" data-bs-parent="#installAccordion">
+                                    <div class="accordion-body small">
+                                        <ol>
+                                            <li>Enable Developer Mode</li>
+                                            <li>Download APK file</li>
+                                            <li>Use SideQuest or ADB to install</li>
+                                            <li>Enable hand tracking in settings</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#android">
+                                        Android AR Setup
+                                    </button>
+                                </h2>
+                                <div id="android" class="accordion-collapse collapse" data-bs-parent="#installAccordion">
+                                    <div class="accordion-body small">
+                                        <ol>
+                                            <li>Install from Google Play Store</li>
+                                            <li>Grant camera permissions</li>
+                                            <li>Ensure ARCore is installed</li>
+                                            <li>Find well-lit area for tracking</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Manual -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-info text-white">
+                        <h4 class="mb-0"><i class="fas fa-book me-2"></i>User Manual</h4>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold">Navigation</h6>
+                        <ul class="small mb-3">
+                            <li>Use gaze or pinch to select UI elements</li>
+                            <li>Voice commands for menu navigation</li>
+                            <li>Hand gestures for object interaction</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold">Experiment Workflow</h6>
+                        <ol class="small mb-3">
+                            <li>Select experiment from library</li>
+                            <li>Read safety instructions</li>
+                            <li>Follow step-by-step guide</li>
+                            <li>Perform gestures as indicated</li>
+                            <li>Observe results and take notes</li>
+                            <li>Complete assessment quiz</li>
+                        </ol>
+                        
+                        <a href="{{ url_for('gestures') }}" class="btn btn-sm btn-info">
+                            <i class="fas fa-hand-paper me-1"></i>Gesture Guide
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Documentation -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-warning text-white">
+                        <h4 class="mb-0"><i class="fas fa-code me-2"></i>API Documentation</h4>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold">Core Systems</h6>
+                        <ul class="small mb-3">
+                            <li><code>GestureManager</code> - Hand tracking interface</li>
+                            <li><code>ChemistryEngine</code> - Reaction simulation</li>
+                            <li><code>LabEquipment</code> - Interactive objects</li>
+                            <li><code>ExperimentController</code> - Workflow management</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold">Integration Examples</h6>
+                        <div class="code-example bg-dark text-light p-2 rounded small mb-3">
+                            <code>
+                                // Initialize gesture recognition<br>
+                                GestureManager.Initialize();<br>
+                                // Register pinch callback<br>
+                                GestureManager.OnPinch += HandlePinch;
+                            </code>
+                        </div>
+                        
+                        <a href="https://github.com/shubhmrj/XR-Lab" class="btn btn-sm btn-warning" target="_blank">
+                            <i class="fab fa-github me-1"></i>View Source
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Troubleshooting -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-danger text-white">
+                        <h4 class="mb-0"><i class="fas fa-wrench me-2"></i>Troubleshooting</h4>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold">Common Issues</h6>
+                        <div class="troubleshooting-list">
+                            <div class="issue-item mb-2">
+                                <strong class="text-danger">Hand tracking not working?</strong>
+                                <ul class="small text-muted">
+                                    <li>Check lighting conditions</li>
+                                    <li>Recalibrate in settings</li>
+                                    <li>Keep hands in camera view</li>
+                                </ul>
+                            </div>
+                            <div class="issue-item mb-2">
+                                <strong class="text-warning">App crashes on startup?</strong>
+                                <ul class="small text-muted">
+                                    <li>Check system requirements</li>
+                                    <li>Update device drivers</li>
+                                    <li>Reinstall application</li>
+                                </ul>
+                            </div>
+                            <div class="issue-item mb-2">
+                                <strong class="text-info">Poor performance?</strong>
+                                <ul class="small text-muted">
+                                    <li>Close background apps</li>
+                                    <li>Lower graphics settings</li>
+                                    <li>Check available storage</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="{{ url_for('issues_page') }}" class="btn btn-sm btn-danger">
+                            <i class="fas fa-bug me-1"></i>Report Issue
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Tutorials -->
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-dark text-white">
+                        <h3 class="mb-0"><i class="fas fa-video me-2"></i>Video Tutorials</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="tutorial-video text-center">
+                                    <div class="video-placeholder bg-light p-4 rounded mb-2">
+                                        <i class="fas fa-play-circle fa-4x text-primary"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Getting Started</h6>
+                                    <p class="small text-muted">Complete setup and first experiment walkthrough</p>
+                                    <span class="badge bg-primary">15 min</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="tutorial-video text-center">
+                                    <div class="video-placeholder bg-light p-4 rounded mb-2">
+                                        <i class="fas fa-play-circle fa-4x text-success"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Gesture Mastery</h6>
+                                    <p class="small text-muted">Learn all gesture controls with practice exercises</p>
+                                    <span class="badge bg-success">20 min</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="tutorial-video text-center">
+                                    <div class="video-placeholder bg-light p-4 rounded mb-2">
+                                        <i class="fas fa-play-circle fa-4x text-warning"></i>
+                                    </div>
+                                    <h6 class="fw-bold">Advanced Experiments</h6>
+                                    <p class="small text-muted">Complex chemistry experiments and techniques</p>
+                                    <span class="badge bg-warning">25 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-secondary text-white">
+                        <h3 class="mb-0"><i class="fas fa-question-circle me-2"></i>Frequently Asked Questions</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        What devices are supported?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        XR Chemistry Lab supports Meta Quest 2/3/Pro, Android devices with ARCore, and Windows PCs with VR headsets. Check our <a href="{{ url_for('download') }}">download page</a> for detailed system requirements.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        Is hand tracking required?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Yes, hand tracking is essential for the gesture-based interaction system. Make sure your device supports hand tracking and it's enabled in settings.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        Can I use it for classroom teaching?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Absolutely! XR Chemistry Lab is designed for educational use. It includes progress tracking, assessment tools, and multi-language support perfect for classroom environments.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                        How do I report bugs or request features?
+                                    </button>
+                                </h2>
+                                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Use our <a href="{{ url_for('issues_page') }}">issues page</a> to report bugs or request new features. You can also contribute directly on our <a href="https://github.com/shubhmrj/XR-Lab" target="_blank">GitHub repository</a>.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Resources -->
+        <div class="row mt-5">
+            <div class="col-lg-12 text-center">
+                <h3 class="fw-bold mb-4">📖 Additional Resources</h3>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="https://github.com/shubhmrj/XR-Lab" class="btn btn-outline-dark" target="_blank">
+                        <i class="fab fa-github me-2"></i>GitHub Repository
+                    </a>
+                    <a href="{{ url_for('demos') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-flask me-2"></i>Experiment Library
+                    </a>
+                    <a href="{{ url_for('gestures') }}" class="btn btn-outline-success">
+                        <i class="fas fa-hand-paper me-2"></i>Gesture Guide
+                    </a>
+                    <a href="{{ url_for('issues_page') }}" class="btn btn-outline-warning">
+                        <i class="fas fa-life-ring me-2"></i>Get Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

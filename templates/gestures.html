@@ -1,0 +1,415 @@
+{% extends "base.html" %}
+
+{% block title %}Gesture Controls - XR Chemistry Lab{% endblock %}
+
+{% block main_class %}pt-5{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h1 class="display-4 fw-bold">🖐️ Gesture Controls Guide</h1>
+                <p class="lead text-muted">Master the intuitive hand gestures that power your chemistry experiments</p>
+            </div>
+        </div>
+
+        <!-- Gesture Overview -->
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 shadow-sm bg-primary text-white">
+                    <div class="card-body text-center py-4">
+                        <h3 class="fw-bold mb-3">🤖 AI-Powered Hand Tracking</h3>
+                        <p class="mb-3">Our advanced ManoMotion SDK recognizes natural hand movements with incredible precision, making chemistry experiments feel intuitive and engaging.</p>
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <h4 class="fw-bold">99.5%</h4>
+                                <small>Gesture Accuracy</small>
+                            </div>
+                            <div class="col-md-4">
+                                <h4 class="fw-bold">7</h4>
+                                <small>Gesture Types</small>
+                            </div>
+                            <div class="col-md-4">
+                                <h4 class="fw-bold">60fps</h4>
+                                <small>Real-time Tracking</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gesture Cards -->
+        <div class="row g-4">
+            <!-- Pinch to Select -->
+            <div class="col-lg-6">
+                <div class="glass-card h-100 gesture-card gpu-accelerated">
+                    <div class="card-header" style="background: var(--primary-gradient);">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-hand-point-up fa-2x me-3" style="color: var(--neon-blue);"></i>
+                            <div>
+                                <h4 class="mb-0 holographic-text">Pinch to Select</h4>
+                                <small class="text-light">Precision Object Selection</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="fw-bold" style="color: var(--neon-blue);">How to Perform:</h6>
+                                <ol class="mb-3 text-light">
+                                    <li>Extend your index finger and thumb</li>
+                                    <li>Bring them close together over the target object</li>
+                                    <li>Pinch fingertips together to select</li>
+                                    <li>Hold to maintain selection</li>
+                                </ol>
+                                <h6 class="fw-bold" style="color: var(--neon-green);">Best Used For:</h6>
+                                <ul class="list-unstyled text-light">
+                                    <li>• Selecting beakers and test tubes</li>
+                                    <li>• Picking up small lab equipment</li>
+                                    <li>• Activating UI elements</li>
+                                    <li>• Precise object manipulation</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="gesture-demo">
+                                    <!-- Gesture visualization will be added by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grab & Manipulate -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow-sm gesture-card">
+                    <div class="card-header bg-success text-white">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-hand-rock fa-2x me-3"></i>
+                            <div>
+                                <h4 class="mb-0">Grab & Manipulate</h4>
+                                <small>Natural Object Handling</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="fw-bold text-success">How to Perform:</h6>
+                                <ol class="mb-3">
+                                    <li>Open your hand near the object</li>
+                                    <li>Close fingers around the object</li>
+                                    <li>Move your hand to relocate the object</li>
+                                    <li>Open hand to release</li>
+                                </ol>
+                                <h6 class="fw-bold text-success">Best Used For:</h6>
+                                <ul class="list-unstyled">
+                                    <li>• Moving large equipment</li>
+                                    <li>• Repositioning lab setup</li>
+                                    <li>• Carrying multiple items</li>
+                                    <li>• General object manipulation</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="gesture-demo bg-light p-3 rounded text-center">
+                                    <i class="fas fa-hand-rock fa-4x text-success mb-2"></i>
+                                    <small class="text-muted">Grab Demo</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pour Gesture -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow-sm gesture-card">
+                    <div class="card-header bg-info text-white">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-tint fa-2x me-3"></i>
+                            <div>
+                                <h4 class="mb-0">Pour Gesture</h4>
+                                <small>Realistic Liquid Physics</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="fw-bold text-info">How to Perform:</h6>
+                                <ol class="mb-3">
+                                    <li>Grab a container with liquid</li>
+                                    <li>Tilt your hand past 30° angle</li>
+                                    <li>Control flow rate with tilt angle</li>
+                                    <li>Return to upright to stop pouring</li>
+                                </ol>
+                                <h6 class="fw-bold text-info">Best Used For:</h6>
+                                <ul class="list-unstyled">
+                                    <li>• Titration experiments</li>
+                                    <li>• Mixing solutions</li>
+                                    <li>• Transferring liquids</li>
+                                    <li>• Controlled reagent addition</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="gesture-demo bg-light p-3 rounded text-center">
+                                    <i class="fas fa-tint fa-4x text-info mb-2"></i>
+                                    <small class="text-muted">Pour Demo</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stir Motion -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow-sm gesture-card">
+                    <div class="card-header bg-warning text-white">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-sync-alt fa-2x me-3"></i>
+                            <div>
+                                <h4 class="mb-0">Stir Motion</h4>
+                                <small>Circular Mixing Action</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="fw-bold text-warning">How to Perform:</h6>
+                                <ol class="mb-3">
+                                    <li>Hold a beaker or container</li>
+                                    <li>Make slow, circular motions</li>
+                                    <li>Maintain consistent rhythm</li>
+                                    <li>Observe mixing visualization</li>
+                                </ol>
+                                <h6 class="fw-bold text-warning">Best Used For:</h6>
+                                <ul class="list-unstyled">
+                                    <li>• Dissolving solutes</li>
+                                    <li>• Homogenizing mixtures</li>
+                                    <li>• Accelerating reactions</li>
+                                    <li>• Creating emulsions</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="gesture-demo bg-light p-3 rounded text-center">
+                                    <i class="fas fa-sync-alt fa-4x text-warning mb-2"></i>
+                                    <small class="text-muted">Stir Demo</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ignite Gesture -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow-sm gesture-card">
+                    <div class="card-header bg-danger text-white">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-fire fa-2x me-3"></i>
+                            <div>
+                                <h4 class="mb-0">Ignite Gesture</h4>
+                                <small>Snap Detection System</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="fw-bold text-danger">How to Perform:</h6>
+                                <ol class="mb-3">
+                                    <li>Position hand near Bunsen burner</li>
+                                    <li>Snap fingers with quick motion</li>
+                                    <li>Listen for audio feedback</li>
+                                    <li>Observe flame ignition</li>
+                                </ol>
+                                <h6 class="fw-bold text-danger">Best Used For:</h6>
+                                <ul class="list-unstyled">
+                                    <li>• Lighting Bunsen burners</li>
+                                    <li>• Starting flame tests</li>
+                                    <li>• Heating reactions</li>
+                                    <li>• Sterilization procedures</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="gesture-demo bg-light p-3 rounded text-center">
+                                    <i class="fas fa-fire fa-4x text-danger mb-2"></i>
+                                    <small class="text-muted">Ignite Demo</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scale Gesture -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow-sm gesture-card">
+                    <div class="card-header bg-secondary text-white">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-expand-arrows-alt fa-2x me-3"></i>
+                            <div>
+                                <h4 class="mb-0">Scale Gesture</h4>
+                                <small>Two-Handed Resizing</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="fw-bold text-secondary">How to Perform:</h6>
+                                <ol class="mb-3">
+                                    <li>Pinch with both hands on object</li>
+                                    <li>Move hands apart to enlarge</li>
+                                    <li>Move hands together to shrink</li>
+                                    <li>Release to set new size</li>
+                                </ol>
+                                <h6 class="fw-bold text-secondary">Best Used For:</h6>
+                                <ul class="list-unstyled">
+                                    <li>• Adjusting equipment size</li>
+                                    <li>• Zooming molecular models</li>
+                                    <li>• Resizing UI elements</li>
+                                    <li>• Detailed examination</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="gesture-demo bg-light p-3 rounded text-center">
+                                    <i class="fas fa-expand-arrows-alt fa-4x text-secondary mb-2"></i>
+                                    <small class="text-muted">Scale Demo</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rotate Gesture -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-0 shadow-sm gesture-card">
+                    <div class="card-header bg-dark text-white">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-redo fa-2x me-3"></i>
+                            <div>
+                                <h4 class="mb-0">Rotate Gesture</h4>
+                                <small>3D Object Manipulation</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="fw-bold">How to Perform:</h6>
+                                <ol class="mb-3">
+                                    <li>Grab object with one hand</li>
+                                    <li>Make twisting wrist motions</li>
+                                    <li>Control rotation speed</li>
+                                    <li>Release to stop rotation</li>
+                                </ol>
+                                <h6 class="fw-bold">Best Used For:</h6>
+                                <ul class="list-unstyled">
+                                    <li>• Examining molecular structures</li>
+                                    <li>• Orienting equipment</li>
+                                    <li>• 3D model inspection</li>
+                                    <li>• Changing viewing angles</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="gesture-demo bg-light p-3 rounded text-center">
+                                    <i class="fas fa-redo fa-4x text-dark mb-2"></i>
+                                    <small class="text-muted">Rotate Demo</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calibration Guide -->
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0"><i class="fas fa-cog me-2"></i>Hand Tracking Calibration</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="fw-bold mb-3">Before You Start:</h5>
+                                <div class="calibration-steps">
+                                    <div class="step-item d-flex mb-3">
+                                        <div class="step-number bg-primary text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 30px; height: 30px;">1</div>
+                                        <div>
+                                            <h6 class="mb-1">Ensure Good Lighting</h6>
+                                            <small class="text-muted">Well-lit room with minimal shadows</small>
+                                        </div>
+                                    </div>
+                                    <div class="step-item d-flex mb-3">
+                                        <div class="step-number bg-primary text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 30px; height: 30px;">2</div>
+                                        <div>
+                                            <h6 class="mb-1">Clear Background</h6>
+                                            <small class="text-muted">Avoid cluttered backgrounds behind hands</small>
+                                        </div>
+                                    </div>
+                                    <div class="step-item d-flex mb-3">
+                                        <div class="step-number bg-primary text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 30px; height: 30px;">3</div>
+                                        <div>
+                                            <h6 class="mb-1">Comfortable Position</h6>
+                                            <small class="text-muted">Sit or stand in a comfortable position</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="fw-bold mb-3">Troubleshooting Tips:</h5>
+                                <div class="troubleshooting-tips">
+                                    <div class="tip-item mb-2">
+                                        <i class="fas fa-lightbulb text-warning me-2"></i>
+                                        <strong>Gestures not recognized?</strong> Try recalibrating in settings
+                                    </div>
+                                    <div class="tip-item mb-2">
+                                        <i class="fas fa-eye text-info me-2"></i>
+                                        <strong>Tracking lost?</strong> Keep hands within camera view
+                                    </div>
+                                    <div class="tip-item mb-2">
+                                        <i class="fas fa-hand-paper text-success me-2"></i>
+                                        <strong>Slow response?</strong> Make deliberate, clear gestures
+                                    </div>
+                                    <div class="tip-item mb-2">
+                                        <i class="fas fa-clock text-primary me-2"></i>
+                                        <strong>Lag issues?</strong> Close other applications to free resources
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Practice Mode -->
+        <div class="row mt-5">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 shadow-sm bg-light">
+                    <div class="card-body text-center py-5">
+                        <h3 class="fw-bold mb-3">🎯 Practice Mode</h3>
+                        <p class="text-muted mb-4">Master your gestures in our dedicated practice environment before starting experiments.</p>
+                        <div class="d-flex justify-content-center gap-3">
+                            <button class="btn btn-primary btn-lg">
+                                <i class="fas fa-play me-2"></i>Start Practice Mode
+                            </button>
+                            <a href="{{ url_for('demos') }}" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-flask me-2"></i>Try Experiments
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

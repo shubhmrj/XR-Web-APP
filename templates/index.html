@@ -1,0 +1,433 @@
+{% extends "base.html" %}
+
+{% block title %}Home - XR Chemistry Lab{% endblock %}
+
+{% block content %}
+<!-- Modern Hero Section -->
+<section class="modern-hero">
+    <div class="hero-background">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+    
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6 hero-content">
+                <div class="hero-badge">
+                    <span class="badge-text">At the forefront of</span>
+                    <span class="badge-highlight">virtual reality</span>
+                    <span class="badge-text">innovation</span>
+                </div>
+                
+                <h1 class="modern-hero-title">
+                    Revolutionary<br>
+                    <span class="title-highlight">Chemistry</span><br>
+                    Experience
+                </h1>
+                
+                <p class="modern-hero-subtitle">
+                    We are innovators, constantly exploring the latest advancements 
+                    in virtual reality to bring you groundbreaking educational experiences 
+                    in chemistry and laboratory science.
+                </p>
+                
+                <div class="hero-features-modern">
+                    <div class="feature-point">
+                        <div class="feature-dot"></div>
+                        <span>Always ahead of the curve</span>
+                    </div>
+                    <div class="feature-point">
+                        <div class="feature-dot"></div>
+                        <span>Successful implementations</span>
+                    </div>
+                    <div class="feature-point">
+                        <div class="feature-dot"></div>
+                        <span>Passionate about technology</span>
+                    </div>
+                </div>
+                
+                <div class="hero-actions">
+                    <a href="{{ url_for('download_apk') }}" class="btn-modern-primary">
+                        <i class="fas fa-download"></i>
+                        Download APK
+                    </a>
+                    <a href="#about" class="btn-modern-secondary">
+                        <i class="fas fa-arrow-right"></i>
+                        More about us
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="hero-visual-modern">
+                    <div class="vr-headset-container">
+                        <!-- Modern VR Headset Illustration -->
+                        <div class="vr-headset">
+                            <div class="headset-body">
+                                <div class="headset-lens lens-left"></div>
+                                <div class="headset-lens lens-right"></div>
+                                <div class="headset-strap"></div>
+                                <div class="headset-logo">XR</div>
+                            </div>
+                            <div class="headset-glow"></div>
+                        </div>
+                        
+                        <!-- Floating UI Elements -->
+                        <div class="floating-ui ui-1">
+                            <div class="ui-icon">⚗️</div>
+                            <span>Chemistry Lab</span>
+                        </div>
+                        <div class="floating-ui ui-2">
+                            <div class="ui-icon">🧪</div>
+                            <span>50+ Experiments</span>
+                        </div>
+                        <div class="floating-ui ui-3">
+                            <div class="ui-icon">👋</div>
+                            <span>Gesture Control</span>
+                        </div>
+                        
+                        <!-- Animated Particles -->
+                        <div class="modern-particles">
+                            <div class="particle p1"></div>
+                            <div class="particle p2"></div>
+                            <div class="particle p3"></div>
+                            <div class="particle p4"></div>
+                            <div class="particle p5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>    
+    <!-- Floating Particles -->
+    <div class="particles">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Chemistry Experiments</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-item">
+                    <span class="stat-number">100K+</span>
+                    <span class="stat-label">Students Worldwide</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-item">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Gesture Controls</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Safe Virtual Lab</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Advanced Features Section -->
+<section class="py-5" style="background: var(--bg-dark);">
+    <div class="container">
+        <div class="text-center mb-5">
+            <div class="hero-tagline mx-auto">Core Features</div>
+            <h2 class="section-title">Revolutionary XR Chemistry Experience</h2>
+            <p class="section-subtitle">Industry-leading virtual reality laboratory with advanced gesture recognition and realistic simulations</p>
+        </div>
+        
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <div class="chemistry-card text-center">
+                    <div class="card-icon">
+                        <i class="fas fa-hand-paper"></i>
+                    </div>
+                    <h3 class="card-title">Advanced Gesture Control</h3>
+                    <p class="card-description">
+                        Natural hand interactions powered by ManoMotion SDK. Perform complex laboratory operations 
+                        with intuitive gestures including pinch, grab, pour, stir, and ignite motions for truly immersive learning.
+                    </p>
+                    <div class="card-features">
+                        <span class="feature-badge">8 Gesture Types</span>
+                        <span class="feature-badge">Real-time Recognition</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="chemistry-card text-center">
+                    <div class="card-icon">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h3 class="card-title">Multi-XR Platform</h3>
+                    <p class="card-description">
+                        Seamless AR, VR, and MR experiences across mobile devices, VR headsets, and desktop platforms. 
+                        Cross-device compatibility ensures maximum accessibility for all students.
+                    </p>
+                    <div class="card-features">
+                        <span class="feature-badge">AR/VR/MR</span>
+                        <span class="feature-badge">Cross-Platform</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="chemistry-card text-center">
+                    <div class="card-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3 class="card-title">Realistic Chemical Reactions</h3>
+                    <p class="card-description">
+                        Accurate chemical simulations with real-world physics. Experience authentic laboratory 
+                        procedures including acid-base, precipitation, combustion, and electrochemistry reactions.
+                    </p>
+                    <div class="card-features">
+                        <span class="feature-badge">50+ Reactions</span>
+                        <span class="feature-badge">Physics Engine</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="chemistry-card text-center">
+                    <div class="card-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="card-title">Complete Lab Equipment</h3>
+                    <p class="card-description">
+                        Virtual beakers, test tubes, Bunsen burners, microscopes, and specialized equipment. 
+                        Everything you need for comprehensive chemistry education in a virtual environment.
+                    </p>
+                    <div class="card-features">
+                        <span class="feature-badge">100+ Tools</span>
+                        <span class="feature-badge">Realistic Physics</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="chemistry-card text-center">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="card-title">100% Safe Learning</h3>
+                    <p class="card-description">
+                        Eliminate laboratory hazards while maintaining educational value. Learn proper safety 
+                        protocols without physical risks, dangerous chemicals, or expensive equipment damage.
+                    </p>
+                    <div class="card-features">
+                        <span class="feature-badge">Zero Risk</span>
+                        <span class="feature-badge">Safety Training</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="chemistry-card text-center">
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="card-title">Educational Excellence</h3>
+                    <p class="card-description">
+                        Step-by-step guides, interactive tutorials, safety training, quiz systems, and progress tracking 
+                        for enhanced learning outcomes and comprehensive chemistry education.
+                    </p>
+                    <div class="card-features">
+                        <span class="feature-badge">Progress Tracking</span>
+                        <span class="feature-badge">Interactive Guides</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technology Showcase Section -->
+<section class="py-5" style="background: var(--bg-secondary);">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="hero-tagline">Cutting-Edge Technology</div>
+                <h2 class="section-title text-start">Built with Industry-Leading Tools</h2>
+                <p class="section-subtitle text-start">
+                    Our XR Chemistry Lab leverages the most advanced technologies to deliver an unparalleled 
+                    educational experience with professional-grade performance and reliability.
+                </p>
+                
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-unity"></i>
+                        </div>
+                        <div class="tech-info">
+                            <h5>Unity 3D Engine</h5>
+                            <p>Cross-platform development with advanced rendering</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-hand-paper"></i>
+                        </div>
+                        <div class="tech-info">
+                            <h5>ManoMotion SDK</h5>
+                            <p>Advanced hand tracking and gesture recognition</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="tech-info">
+                            <h5>ARCore/ARKit</h5>
+                            <p>Native AR frameworks for mobile platforms</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="tech-showcase">
+                    <div class="showcase-grid">
+                        <div class="showcase-item">
+                            <i class="fas fa-atom"></i>
+                            <span>Molecular Simulation</span>
+                        </div>
+                        <div class="showcase-item">
+                            <i class="fas fa-vr-cardboard"></i>
+                            <span>VR Integration</span>
+                        </div>
+                        <div class="showcase-item">
+                            <i class="fas fa-flask"></i>
+                            <span>Chemical Reactions</span>
+                        </div>
+                        <div class="showcase-item">
+                            <i class="fas fa-hand-rock"></i>
+                            <span>Gesture Control</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experiments Showcase -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="display-6 fw-bold">⚗️ Featured Experiments</h2>
+                <p class="lead text-muted">Explore our comprehensive library of chemistry experiments</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="experiment-card h-100">
+                    <div class="experiment-image bg-gradient-primary p-4 text-white text-center">
+                        <i class="fas fa-tint fa-3x mb-2"></i>
+                        <h5>Acid-Base Reactions</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="text-muted">Color changes with pH indicators and titration experiments</p>
+                        <span class="badge bg-success">Beginner</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="experiment-card h-100">
+                    <div class="experiment-image bg-gradient-warning p-4 text-white text-center">
+                        <i class="fas fa-fire fa-3x mb-2"></i>
+                        <h5>Flame Tests</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="text-muted">Identify metal ions through characteristic flame colors</p>
+                        <span class="badge bg-primary">Intermediate</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="experiment-card h-100">
+                    <div class="experiment-image bg-gradient-info p-4 text-white text-center">
+                        <i class="fas fa-bolt fa-3x mb-2"></i>
+                        <h5>Electrochemistry</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="text-muted">Battery and electrolysis simulations with electron flow</p>
+                        <span class="badge bg-danger">Advanced</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{{ url_for('demos') }}" class="btn btn-outline-primary btn-lg">
+                <i class="fas fa-flask me-2"></i>Explore All Experiments
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Platform Support -->
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="display-6 fw-bold">📱 Cross-Platform Support</h2>
+                <p class="lead">Available on all major XR platforms</p>
+            </div>
+        </div>
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="platform-card p-4">
+                    <i class="fab fa-android fa-4x mb-3 text-success"></i>
+                    <h4>Mobile AR</h4>
+                    <p>Android smartphones with ARCore support</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="platform-card p-4">
+                    <i class="fas fa-vr-cardboard fa-4x mb-3 text-primary"></i>
+                    <h4>VR Headsets</h4>
+                    <p>Meta Quest 2/3/Pro, HTC Vive, Valve Index</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="platform-card p-4">
+                    <i class="fas fa-desktop fa-4x mb-3 text-warning"></i>
+                    <h4>Desktop VR</h4>
+                    <p>Windows PC with VR headset support</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="display-6 fw-bold mb-4">Ready to Transform Chemistry Education?</h2>
+        <p class="lead mb-4">Join thousands of educators and students already using XR Chemistry Lab</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="{{ url_for('download') }}" class="btn btn-light btn-lg">
+                <i class="fas fa-download me-2"></i>Download Free
+            </a>
+            <a href="https://github.com/shubhmrj/XR-Lab" class="btn btn-outline-light btn-lg" target="_blank">
+                <i class="fab fa-github me-2"></i>View Source
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
