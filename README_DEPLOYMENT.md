@@ -1,71 +1,66 @@
 # XR Chemistry Lab - PythonAnywhere Deployment Guide
 
-## Prerequisites
-1. GitHub account with your code repository
-2. PythonAnywhere account (free tier available)
+## Your Setup Details
+- **PythonAnywhere Username:** XRCHEMLAB
+- **GitHub Repository:** https://github.com/shubhmrj/XR-Web-APP
+- **Web App URL:** https://xrchemlab.pythonanywhere.com
+- **Dashboard:** https://www.pythonanywhere.com/user/XRCHEMLAB/webapps/
+
+## Prerequisites ✅
+1. GitHub account with your code repository ✅
+2. PythonAnywhere account ✅
 
 ## Step-by-Step Deployment Process
 
-### 1. Push to GitHub
-First, ensure your code is in a GitHub repository:
-```bash
-git init
-git add .
-git commit -m "Initial commit for XR Chemistry Lab"
-git remote add origin https://github.com/yourusername/XR-Chem-Lab.git
-git push -u origin main
-```
-
-### 2. PythonAnywhere Setup
-1. Sign up at [pythonanywhere.com](https://www.pythonanywhere.com)
-2. Go to your Dashboard
-3. Open a Bash console
-
-### 3. Clone Repository
+### 1. Clone Repository in PythonAnywhere
 In the PythonAnywhere bash console:
 ```bash
 cd ~
-git clone https://github.com/yourusername/XR-Chem-Lab.git
-cd XR-Chem-Lab
+git clone https://github.com/shubhmrj/XR-Web-APP.git
+cd XR-Web-APP
 ```
 
-### 4. Install Dependencies
+### 2. Install Dependencies
 ```bash
 pip3.10 install --user -r requirements.txt
 ```
 
-### 5. Configure Web App
-1. Go to Web tab in PythonAnywhere dashboard
-2. Click "Add a new web app"
-3. Choose "Manual configuration"
-4. Select Python 3.10
-5. Set source code directory: `/home/yourusername/XR-Chem-Lab`
-6. Set WSGI configuration file: `/home/yourusername/XR-Chem-Lab/wsgi.py`
+### 3. Configure Web App Settings
+In your PythonAnywhere Web tab (https://www.pythonanywhere.com/user/XRCHEMLAB/webapps/):
 
-### 6. Update WSGI File
-Edit the wsgi.py file to replace `yourusername` with your actual PythonAnywhere username.
+**Source Code:**
+```
+/home/XRCHEMLAB/XR-Web-APP
+```
 
-### 7. Configure Static Files
+**WSGI Configuration File:**
+```
+/home/XRCHEMLAB/XR-Web-APP/wsgi.py
+```
+
+**Python Version:** Python 3.10
+
+### 4. Configure Static Files
 In the Web tab, add static file mappings:
-- URL: `/static/`
-- Directory: `/home/yourusername/XR-Chem-Lab/static/`
+- **URL:** `/static/`
+- **Directory:** `/home/XRCHEMLAB/XR-Web-APP/static/`
 
-### 8. Environment Variables
-In the Web tab, add environment variables if needed:
-- SECRET_KEY: your-secret-key-here
+### 5. Environment Variables (Optional)
+In the Web tab, you can add environment variables:
+- **SECRET_KEY:** xr-chem-lab-secret-key-2024
 
-### 9. Reload Web App
-Click "Reload" button in the Web tab.
+### 6. Reload Web App
+Click the green "Reload" button in the Web tab.
 
-## Your app will be available at:
-`https://yourusername.pythonanywhere.com`
+## 🎉 Your app will be available at:
+**https://xrchemlab.pythonanywhere.com**
 
 ## Future Updates
 To update your deployed app:
 1. Push changes to GitHub
 2. In PythonAnywhere bash console:
    ```bash
-   cd ~/XR-Chem-Lab
+   cd ~/XR-Web-APP
    git pull origin main
    ```
 3. Reload the web app from the Web tab
